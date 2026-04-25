@@ -1,0 +1,28 @@
+#!/bin/bash
+set -e
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
+cd $DIR
+
+## Set repo name and tags
+REPO_NAME="newsday/python-ml-base"
+TIMESTAMP=$(date '+%Y%m%d%H%M%S')
+TAG="cpu-$TIMESTAMP"
+LATEST_TAG="cpu:latest"
+
+## Build the image with timestamp tag
+docker build -t "$REPO_NAME:$TAG" --build-arg ENV=$ENV --build-arg TARGETENV=$ENV --build-arg BUILD_VERSION=$TAG .
+
+## Tag the image as latest
+docker tag "$REPO_NAME:$TAG" "$REPO_NAME:$LATEST_TAG"
+
+## wait 10 seconds
+sleep 10
+
+## push both tags to docker hub
+docker push "$REPO_NAME:$TAG"
+docker push "$REPO_NAME:$LATEST_TAG"
+
+## Let us know we're good
+echo "BUILD COMPLETE: $REPO_NAME:$TAG and $REPO_NAME:$LATEST_TAG"
