@@ -8,7 +8,7 @@ cd $DIR
 ## Set repo name and tags
 REPO_NAME="newsday/python-ml-base"
 TIMESTAMP=$(date '+%Y%m%d%H%M%S')
-TAG="cpu-$TIMESTMP"
+TAG="cpu-$TIMESTAMP"
 LATEST_TAG="cpu-latest"
 
 ## Build the image with timestamp tag
