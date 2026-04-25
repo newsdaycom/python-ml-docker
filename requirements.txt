@@ -1,0 +1,15 @@
+# Shared CPU embedding/vector dependencies for Data Vault AI services.
+# These packages are intentionally centralized here so rag-agent, sql-agent,
+# and vectorization-service-cpu can inherit this image without reinstalling the
+# heavy embedding stack on every app build.
+
+sentence-transformers>=3.4.1
+transformers>=4.56.0
+regex>=2025.10.22
+langchain-huggingface>=0.1.2
+chromadb>=0.5.0
+langchain>=0.3.0
+langchain-community>=0.3.0
+langchain-core>=0.3.0
+langchain-openai>=0.2.0
+langchain-chroma>=0.1.4

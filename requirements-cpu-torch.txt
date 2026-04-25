@@ -1,0 +1,4 @@
+# CPU-only PyTorch is installed from the PyTorch CPU wheel index in the Dockerfile.
+# Keep this file torch-only so pip never searches the PyTorch index for packages
+# that only exist on PyPI.
+torch
